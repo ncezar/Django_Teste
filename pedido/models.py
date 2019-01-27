@@ -20,7 +20,7 @@ class Produto(models.Model):
 class Cadastro(models.Model):
     cliente = models.ForeignKey('Cliente',on_delete=models.CASCADE,)
     item = models.ForeignKey('Produto',on_delete=models.CASCADE,)
-    preco_unitario =models.DecimalField(max_digits=10, decimal_places=2)
+    preco_unitario =models.FloatField(default=0)
     quantidade = models.IntegerField(default=0)
     def __str__(self):
       return '{} - {}'.format(self.cliente.nome, self.item.nome)

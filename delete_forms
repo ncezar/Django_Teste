@@ -1,2 +1,0 @@
- <!--<a href="{% url 'cadastro-delete' cadastro.id %}"><input type =button value='Delete'></a>-->
- <a href="{% url 'cadastro-delete' cadastro.id %}">Delete</a>
