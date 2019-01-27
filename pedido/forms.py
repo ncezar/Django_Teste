@@ -21,8 +21,11 @@ class CadastroForm(forms.ModelForm):
     def clean(self):
         item = self.cleaned_data['item']
         quantidade = self.cleaned_data['quantidade']
+        preco_unitario = self.cleaned_data['preco_unitario']
         #preco_unitario = item.preco_unit
         #print(item.multiplo) item ja é objeto de Produto, logo ele alcança os valores dos campos desta tabela, logo é só comprar com a quantidade
+        if (preco_unitario <= ((item.preco_unit)-(item.preco_unit*0.1))):
+            raise forms.ValidationError("Rentabilidade ruim!")
 
         if (quantidade %( item.multiplo)) !=0:
             raise forms.ValidationError("A quantidade precisa multipla de: %s" %(item.multiplo))
