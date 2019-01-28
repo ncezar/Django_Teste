@@ -18,6 +18,7 @@ def index(request): #CadastroCreate
     if request.method=='POST':
         form = CadastroForm(request.POST or None)
         if form.is_valid():
+            preco_unitario = request.POST.get("preco_unitario")
             messages.success(request, 'Enviado com sucesso!')
             form.save()
     else:
