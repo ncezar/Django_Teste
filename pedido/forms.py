@@ -11,7 +11,11 @@ class CadastroForm(forms.ModelForm):
         preco_unitario = self.cleaned_data['preco_unitario']
         if preco_unitario <= 0:
             raise forms.ValidationError("O preço precisa ser maior que 0!")
+<<<<<<< HEAD
         return self.cleaned_data
+=======
+        return preco_unitario
+>>>>>>> 702232158b50a7bce461d0541373c00e570ba281
     #---#
 
 
@@ -19,6 +23,7 @@ class CadastroForm(forms.ModelForm):
         item = self.cleaned_data['item']
         quantidade = self.cleaned_data['quantidade']
         preco_unitario = self.cleaned_data['preco_unitario']
+<<<<<<< HEAD
         #preco_unitario = item.preco_unit
         print('Item.Preco_unit',item.preco_unit)
         print('Preco_Unit',preco_unitario)#item ja é objeto de Produto, logo ele alcança os valores dos campos desta tabela, logo é só comprar com a quantidade
@@ -27,5 +32,13 @@ class CadastroForm(forms.ModelForm):
         if (({'preco_unitario': preco_unitario}) < ((item.preco_unit)*0.9)):
             raise forms.ValidationError("Rentabilidade ruim!")
         if (quantidade % (item.multiplo)) !=0:
+=======
+        #print(item.multiplo) item ja é objeto de Produto, logo ele alcança os valores dos campos desta tabela, logo é só comprar com a quantidade
+        if quantidade <= 0:
+            raise forms.ValidationError("A quantidade precisa ser maior que 0!")
+        if (preco_unitario <= ((item.preco_unit)-(item.preco_unit*0.1))):
+            raise forms.ValidationError("Rentabilidade ruim!")
+        if (quantidade %( item.multiplo)) !=0:
+>>>>>>> 702232158b50a7bce461d0541373c00e570ba281
             raise forms.ValidationError("A quantidade precisa multipla de: %s" %(item.multiplo))
         return self.cleaned_data

@@ -10,7 +10,10 @@ from django.urls import reverse
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.urls import reverse_lazy
 from django.http import JsonResponse
+<<<<<<< HEAD
 from django.contrib import messages
+=======
+>>>>>>> 702232158b50a7bce461d0541373c00e570ba281
 
 def base(request):
     return render(request, "pedido/base.html")
@@ -19,6 +22,10 @@ def index(request): #CadastroCreate
     if request.method=='POST':
         form = CadastroForm(request.POST or None)
         if form.is_valid():
+<<<<<<< HEAD
+=======
+            preco_unitario = request.POST.get("preco_unitario")
+>>>>>>> 702232158b50a7bce461d0541373c00e570ba281
             messages.success(request, 'Enviado com sucesso!')
             form.save()
     else:
@@ -54,6 +61,7 @@ def load_preco(request):
     produto = Produto.objects.get(id=item)
     return JsonResponse({'preco_unitario' : produto.preco_unit})
     #return render(request, {'preco_unitario': produto.preco_unit})
+<<<<<<< HEAD
 #---#
 def load_rentabilidade(request):
     item = request.GET.get('item')
@@ -68,3 +76,5 @@ def load_rentabilidade(request):
     }
 
     return JsonResponse(data)
+=======
+>>>>>>> 702232158b50a7bce461d0541373c00e570ba281
