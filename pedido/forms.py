@@ -19,7 +19,7 @@ class CadastroForm(forms.ModelForm):
             raise forms.ValidationError("O preço precisa ser maior que 0!")
         if quantidade <= 0:
             raise forms.ValidationError("A quantidade precisa ser maior que 0!")
-        if (({'preco_unitario': preco_unitario}) < ((item.preco_unit)*0.9)):
+        if ((preco_unitario) < ((item.preco_unit)*0.9)):
             raise forms.ValidationError("Rentabilidade ruim!")
         if (quantidade % (item.multiplo)) !=0:
             raise forms.ValidationError("A quantidade precisa multipla de: %s" %(item.multiplo))
