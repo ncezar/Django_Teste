@@ -10,10 +10,14 @@ from django.urls import reverse
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.urls import reverse_lazy
 from django.http import JsonResponse
+<<<<<<< 9f9ffdd18c4322d695dfc86a253abb00b4c8b198
 <<<<<<< HEAD
 from django.contrib import messages
 =======
 >>>>>>> 702232158b50a7bce461d0541373c00e570ba281
+=======
+from django.contrib import messages
+>>>>>>> erros finais corrigidos
 
 def base(request):
     return render(request, "pedido/base.html")
@@ -22,10 +26,13 @@ def index(request): #CadastroCreate
     if request.method=='POST':
         form = CadastroForm(request.POST or None)
         if form.is_valid():
+<<<<<<< 9f9ffdd18c4322d695dfc86a253abb00b4c8b198
 <<<<<<< HEAD
 =======
             preco_unitario = request.POST.get("preco_unitario")
 >>>>>>> 702232158b50a7bce461d0541373c00e570ba281
+=======
+>>>>>>> erros finais corrigidos
             messages.success(request, 'Enviado com sucesso!')
             form.save()
     else:
@@ -57,17 +64,25 @@ class CadastroDelete(DeleteView):
 #-----#
 def load_preco(request):
     item = request.GET.get('item')
+<<<<<<< 9f9ffdd18c4322d695dfc86a253abb00b4c8b198
     print(item)
     produto = Produto.objects.get(id=item)
     return JsonResponse({'preco_unitario' : produto.preco_unit})
     #return render(request, {'preco_unitario': produto.preco_unit})
 <<<<<<< HEAD
+=======
+    #print(item)
+    produto = Produto.objects.get(id=item)
+    return JsonResponse({'preco_unitario' : produto.preco_unit})
+    #return render(request, {'preco_unitario': produto.preco_unit})
+>>>>>>> erros finais corrigidos
 #---#
 def load_rentabilidade(request):
     item = request.GET.get('item')
     preco_unitario = request.GET.get('preco_unitario')
     #print(preco_unitario)
     produto = Produto.objects.get(id=item)#estou pegando o preco da tabela de mesmo item selecionado pra comparar com o q usuario digitou
+<<<<<<< 9f9ffdd18c4322d695dfc86a253abb00b4c8b198
 
     data={
         'rent_otima': (float(preco_unitario) > produto.preco_unit),
@@ -78,3 +93,10 @@ def load_rentabilidade(request):
     return JsonResponse(data)
 =======
 >>>>>>> 702232158b50a7bce461d0541373c00e570ba281
+=======
+    data={
+        'rent_otima': (float(preco_unitario) > produto.preco_unit),
+        'rent_boa': (float(preco_unitario) >= (produto.preco_unit*0.9) and float(preco_unitario)<= (produto.preco_unit) )
+    }
+    return JsonResponse(data)
+>>>>>>> erros finais corrigidos

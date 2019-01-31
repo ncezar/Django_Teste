@@ -13,11 +13,15 @@ class Cliente(models.Model):
 class Produto(models.Model):
     nome= models.CharField(max_length=200)
     preco_unit = models.FloatField(max_length=200)
+<<<<<<< 9f9ffdd18c4322d695dfc86a253abb00b4c8b198
 <<<<<<< HEAD
     multiplo = models.IntegerField(default=0, null=False)
 =======
     multiplo = models.IntegerField(blank=True, null=True)
 >>>>>>> 702232158b50a7bce461d0541373c00e570ba281
+=======
+    multiplo = models.IntegerField(default=0, null=False)
+>>>>>>> erros finais corrigidos
     def __str__(self):
         return '{} '.format(self.nome)
 

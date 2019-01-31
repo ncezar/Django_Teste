@@ -38,7 +38,11 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'pedido',
+<<<<<<< 9f9ffdd18c4322d695dfc86a253abb00b4c8b198
     
+=======
+
+>>>>>>> erros finais corrigidos
 
 ]
 
@@ -50,10 +54,13 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+<<<<<<< 9f9ffdd18c4322d695dfc86a253abb00b4c8b198
 <<<<<<< HEAD
 
 =======
 >>>>>>> 702232158b50a7bce461d0541373c00e570ba281
+=======
+>>>>>>> erros finais corrigidos
 ]
 
 ROOT_URLCONF = 'mysite.urls'
@@ -69,10 +76,14 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+<<<<<<< 9f9ffdd18c4322d695dfc86a253abb00b4c8b198
 <<<<<<< HEAD
 
 =======
 >>>>>>> 702232158b50a7bce461d0541373c00e570ba281
+=======
+
+>>>>>>> erros finais corrigidos
             ],
         },
     },
@@ -127,6 +138,7 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.0/howto/static-files/
+<<<<<<< 9f9ffdd18c4322d695dfc86a253abb00b4c8b198
 <<<<<<< HEAD
 
 STATIC_URL = '/static/'
@@ -142,3 +154,8 @@ STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
 #    os.path.join(PROJECT_ROOT, 'static'),
 #)
 >>>>>>> 702232158b50a7bce461d0541373c00e570ba281
+=======
+
+STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+>>>>>>> erros finais corrigidos
