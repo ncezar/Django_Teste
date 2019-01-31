@@ -50,7 +50,7 @@ class CadastroDelete(DeleteView):
 #-----#
 def load_preco(request):
     item = request.GET.get('item')
-    print(item)
+    #print(item)
     produto = Produto.objects.get(id=item)
     return JsonResponse({'preco_unitario' : produto.preco_unit})
     #return render(request, {'preco_unitario': produto.preco_unit})
@@ -60,11 +60,8 @@ def load_rentabilidade(request):
     preco_unitario = request.GET.get('preco_unitario')
     #print(preco_unitario)
     produto = Produto.objects.get(id=item)#estou pegando o preco da tabela de mesmo item selecionado pra comparar com o q usuario digitou
-
     data={
         'rent_otima': (float(preco_unitario) > produto.preco_unit),
-        'rent_boa': (float(preco_unitario) >= (produto.preco_unit*0.9) and float(preco_unitario <=(produto.preco_unit)) or float(preco_unitario))
-
+        'rent_boa': (float(preco_unitario) >= (produto.preco_unit*0.9) and float(preco_unitario)<= (produto.preco_unit) )
     }
-
     return JsonResponse(data)

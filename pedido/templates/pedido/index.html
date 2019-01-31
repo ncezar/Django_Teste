@@ -34,29 +34,29 @@
      <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
      <script>
         $("#id_item").change(function () {
-            var url = $("#CadastroForm").attr("data-url");  // get the url of the `load_cities` view
+            var url = $("#CadastroForm").attr("data-url");
             console.log('URL ',url)
-            var item = $(this).val();  // get the selected country ID from the HTML input
+            var item = $(this).val();
             //console.log('Mãe to na funcao again ', item)
-            $.ajax({                       // initialize an AJAX request
-              url: url,                    // set the url of the request (= localhost:8000/hr/ajax/load-cities/)
+            $.ajax({     //envia parametros para o request
+              url: url,
               data: {
-                'item': item      // add the country id to the GET parameters
+                'item': item
 
               },
               dataType: 'json',
               success: function (data) {   // `data` is the return of the `load_cities` view function
                 //$("#preco_unitario").html(data);
-                console.log('Mãe to na funcao dos dados ', data['preco_unitario'])
+                //console.log('Mãe to na funcao dos dados ', data['preco_unitario'])
                 $('#id_preco_unitario').val(data['preco_unitario'])
 
-                 // replace the contents of the city input with the data that came from the server
+
               }
             });
 
           });
         </script>
-        <script>
+        <script>//script para mostrar a rentabilidade, ajax faz request para view load-rentabilidade quando o item html preco_unitario muda no formulario
           $("#id_preco_unitario").change(function () {
             var preco_unitario = $(this).val();
             var item = $("#id_item").val();

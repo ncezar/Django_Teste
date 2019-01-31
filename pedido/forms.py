@@ -21,6 +21,7 @@ class CadastroForm(forms.ModelForm):
             raise forms.ValidationError("A quantidade precisa ser maior que 0!")
         if ((preco_unitario) < ((item.preco_unit)*0.9)):
             raise forms.ValidationError("Rentabilidade ruim!")
-        if (quantidade % (item.multiplo)) !=0:
-            raise forms.ValidationError("A quantidade precisa multipla de: %s" %(item.multiplo))
+        if (item.multiplo) > 0:
+            if (quantidade % (item.multiplo)) !=0:
+               raise forms.ValidationError("A quantidade precisa multipla de: %s" %(item.multiplo))
         return self.cleaned_data
