@@ -6,15 +6,14 @@ class CadastroForm(forms.ModelForm):
     class Meta:
         model = Cadastro
         fields = ['cliente', 'item', 'preco_unitario', 'quantidade']
-        #---#
-
+#---#
     def clean(self):
         item = self.cleaned_data['item']
         quantidade = self.cleaned_data['quantidade']
         preco_unitario = self.cleaned_data['preco_unitario']
         #preco_unitario = item.preco_unit
-        print('Item.Preco_unit',item.preco_unit)
-        print('Preco_Unit',self.cleaned_data['preco_unitario'])#item ja é objeto de Produto, logo ele alcança os valores dos campos desta tabela, logo é só comprar com a quantidade
+        #print('Item.Preco_unit',item.preco_unit)
+        #print('Preco_Unit',self.cleaned_data['preco_unitario'])#item ja é objeto de Produto, logo ele alcança os valores dos campos desta tabela, logo é só comprar com a quantidade
         if preco_unitario <= 0:
             raise forms.ValidationError("O preço precisa ser maior que 0!")
         if quantidade <= 0:

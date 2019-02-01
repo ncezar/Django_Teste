@@ -34,23 +34,23 @@
      <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
      <script>
         $("#id_item").change(function () {
-            var url = $("#CadastroForm").attr("data-url");
+            var url = $("#CadastroForm").attr("data-url");  // pega a url enviada no form (load-preco)
             console.log('URL ',url)
-            var item = $(this).val();
+            var item = $(this).val();  // pega o valor do input html do item
             //console.log('Mãe to na funcao again ', item)
-            $.ajax({     //envia parametros para o request
-              url: url,
+            $.ajax({                       // AJAX request
+              url: url,                    // chama a url
               data: {
-                'item': item
+                'item': item      // adiciona o item aos parametros de GET
 
               },
               dataType: 'json',
-              success: function (data) {   // `data` is the return of the `load_cities` view function
+              success: function (data) {   // data é o retorno da view load-preco
                 //$("#preco_unitario").html(data);
-                //console.log('Mãe to na funcao dos dados ', data['preco_unitario'])
+                console.log('Mãe to na funcao dos dados ', data['preco_unitario'])
                 $('#id_preco_unitario').val(data['preco_unitario'])
 
-
+                 // replace the contents of the city input with the data that came from the server
               }
             });
 
