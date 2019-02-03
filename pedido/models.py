@@ -22,6 +22,7 @@ class Cadastro(models.Model):
     item = models.ForeignKey('Produto',on_delete=models.CASCADE,)
     preco_unitario =models.FloatField(default=0)
     quantidade = models.IntegerField(default=0)
+    total = models.FloatField(null=False, default=0)
     def __str__(self):
       return '{} - {}'.format(self.cliente.nome, self.item.nome)
     def get_absolute_url(self):

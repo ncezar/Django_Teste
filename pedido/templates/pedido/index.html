@@ -47,7 +47,7 @@
               dataType: 'json',
               success: function (data) {   // data é o retorno da view load-preco
                 //$("#preco_unitario").html(data);
-                console.log('Mãe to na funcao dos dados ', data['preco_unitario'])
+                //console.log('Mãe to na funcao dos dados ', data['preco_unitario'])
                 $('#id_preco_unitario').val(data['preco_unitario'])
 
                  // replace the contents of the city input with the data that came from the server
@@ -75,6 +75,25 @@
                 if (data.rent_boa){
                   alert("Rentabilidade boa.");
                 }
+              }
+            });
+
+          });
+        </script>
+        <script>//script para mostrar o preco total do pedido
+          $("#id_quantidade").change(function () {
+            var quantidade = $(this).val();
+            var preco_unitario= $("#id_preco_unitario").val();
+            //
+            $.ajax({
+              url: '/ajax/load-total/',
+              data: {
+                'quantidade': quantidade,
+                'preco_unitario': preco_unitario
+              },
+              dataType: 'json',
+              success: function (data) {
+                $('#id_total').val(data['total'])
               }
             });
 

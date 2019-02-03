@@ -5,7 +5,7 @@ from .models import Produto
 class CadastroForm(forms.ModelForm):
     class Meta:
         model = Cadastro
-        fields = ['cliente', 'item', 'preco_unitario', 'quantidade']
+        fields = ['cliente', 'item', 'preco_unitario', 'quantidade', 'total']
 
 #---#
 

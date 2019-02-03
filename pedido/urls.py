@@ -13,6 +13,7 @@ urlpatterns = [
     path('cadastrar', views.index, name='index'),
     path('ajax/load-preco/', views.load_preco, name='load_preco'),
     path('ajax/load-rentabilidade/', views.load_rentabilidade, name='load_rentabilidade'),
+    path('ajax/load-total/', views.load_total, name='load_total'),
     #path('load-rentabilidade/', views.load_preco, name='load_rentabilidade'),
 
 

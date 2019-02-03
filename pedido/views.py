@@ -46,7 +46,6 @@ class CadastroUpdate(UpdateView):
 class CadastroDelete(DeleteView):
     model = Cadastro
     success_url = reverse_lazy('pedido/base.html')
-
 #-----#
 def load_preco(request):
     item = request.GET.get('item')
@@ -63,5 +62,15 @@ def load_rentabilidade(request):
     data={
         'rent_otima': (float(preco_unitario) > produto.preco_unit),
         'rent_boa': (float(preco_unitario) >= (produto.preco_unit*0.9) and float(preco_unitario)<= (produto.preco_unit) )
+    }
+    return JsonResponse(data)
+#-----#
+def load_total(request):
+    quantidade = request.GET.get('quantidade')
+    preco_unitario = request.GET.get('preco_unitario')
+    #print(preco_unitario)
+    data={
+        'total': (float(quantidade) * float(preco_unitario)),
+
     }
     return JsonResponse(data)
