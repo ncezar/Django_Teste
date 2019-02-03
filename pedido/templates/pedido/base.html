@@ -24,6 +24,7 @@
                 <th>Item</th>
               <th>Preço Unitario</th>
               <th>Quantidade</th>
+              <th>Total</th>
             </tr>
              {% for cadastro in object_list %}
 
@@ -33,6 +34,7 @@
                     <td>{{cadastro.item}}</td>
                     <td> {{cadastro.preco_unitario}} </td>
                     <td> {{cadastro.quantidade}}</td>
+                    <td> {{cadastro.total}}</td>
                   </tr>
 
 
