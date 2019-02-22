@@ -1,54 +1,58 @@
-
+{% load staticfiles %}
+{{ form.media.css }}
+{{ form.media.js }}
 <html>
     <head>
         <title>Mercos</title>
 
         <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
         <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
-
+        <link rel="stylesheet" href="{% static 'css/pedido.css' %}">
     </head>
     <body>
         <div class="page-header">
             <h1><a href="/">Pedidos</a></h1>
-
         </div>
 
         <div>
           <h1>Lista de Cadastros</h1>
-
           {% if object_list != None %}
-          <table style="width:100%">
-            <tr>
-              <th>ID</th>
-              <th>Cliente</th>
-                <th>Item</th>
-              <th>Preço Unitario</th>
-              <th>Quantidade</th>
-              <th>Total</th>
-            </tr>
-             {% for cadastro in object_list %}
 
-                  <tr>
-                    <td> <a href="/{{ cadastro.id }}/">{{ cadastro.id }}</a> </td>
-                    <td>  {{cadastro.cliente}} </td>
-                    <td>{{cadastro.item}}</td>
-                    <td> {{cadastro.preco_unitario}} </td>
-                    <td> {{cadastro.quantidade}}</td>
-                    <td> {{cadastro.total}}</td>
-                  </tr>
+                <table class="table table-striped">
+                  <thead>
+                    <tr>
+                      <th scope="col">ID</th>
+                      <th scope="col">Cliente</th>
+                      <th scope="col">Item</th>
+                      <th scope="col">Preco Unitario</th>
+                      <th scope="col">Quantidade</th>
+                      <th scope="col">Total</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                  {% for cadastro in object_list %}
+                    <tr>
+
+                      <td><a href="/{{ cadastro.id }}/">{{ cadastro.id }}</a> </td>
+                      <td>{{cadastro.cliente}}</td>
+                      <td>{{cadastro.item}}</td>
+                      <td> {{cadastro.preco_unitario}} </td>
+                      <td> {{cadastro.quantidade}}</td>
+                      <td> {{cadastro.total}}</td>
+                    </tr>
+                  </tbody>
+                </tr>
+                {% endfor %}
+          {% else %}
+              <p>Nenhum cadastro foi feito ainda.</p>
+          {% endif %}
+      </table>
 
 
-
-            {% endfor %}
-         {% else %}
-            <p>Nenhum cadastro foi feito ainda.</p>
-         {% endif %}
          </table>
        </div><br> <br>
        <div class="content">
          <a href="{% url 'index' %}"><input type =button value='Cadastrar'></a>
        </div>
-
-
     </body>
 </html>

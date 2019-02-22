@@ -4,63 +4,58 @@
 <html>
     <head>
         <title>Pedidos Mercos</title>
+
+
         <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
         <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+        <link rel="stylesheet" href="{% static 'css/pedido.css' %}">
     </head>
     <body>
       <div class="page-header">
             <h1><a href="/">Cadastro</a></h1>
       </div>
 
+      <div class="row align-items-center">
+        <form id="CadastroForm" method ='POST' data-url="{% url 'load_preco' %}" novalidate> {% csrf_token %}
+          <table>
+            {{ form.as_table }}
+          </table>
 
-      <form id="CadastroForm" method ='POST' data-url="{% url 'load_preco' %}" novalidate> {% csrf_token %}
-         {{ form.as_p }}
+           {% if messages %}
+            {% for message in messages %}
+              <p{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</p>
+            {% endfor %}
+           {% endif %}
 
-         {% if messages %}
-
-          {% for message in messages %}
-            <p{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</p>
-          {% endfor %}
-
-         {% endif %}
-
-         <input type='submit' value='Enviar'/>
-         <a href="{% url 'index' %}"><input type =button value='Novo'></a>
-         <br> <br>
-         <a href="/"><input type =button value='Home'></a>
-
-     </form>
+           <input type='submit' style="position: absolute; left: 113px;" value='Enviar'/>
+           <a href="/"><input type =button value='Inicio'  ></a>
+           <br><br><br>
+           <a href="{% url 'index' %}"><input type =button style="position:absolute; left: 50px;" value='Novo'  ></a>
+       </form>
+     </div>
 
      <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
      <script>
         $("#id_item").change(function () {
-            var url = $("#CadastroForm").attr("data-url");  // pega a url enviada no form (load-preco)
+            var url = $("#CadastroForm").attr("data-url");
             console.log('URL ',url)
-            var item = $(this).val();  // pega o valor do input html do item
-            //console.log('Mãe to na funcao again ', item)
-            $.ajax({                       // AJAX request
-              url: url,                    // chama a url
+            var item = $(this).val();
+            $.ajax({
+              url: url,
               data: {
-                'item': item      // adiciona o item aos parametros de GET
-
+                'item': item
               },
               dataType: 'json',
-              success: function (data) {   // data é o retorno da view load-preco
-                //$("#preco_unitario").html(data);
-                //console.log('Mãe to na funcao dos dados ', data['preco_unitario'])
+              success: function (data) {
                 $('#id_preco_unitario').val(data['preco_unitario'])
-
-                 // replace the contents of the city input with the data that came from the server
               }
             });
-
           });
         </script>
-        <script>//script para mostrar a rentabilidade, ajax faz request para view load-rentabilidade quando o item html preco_unitario muda no formulario
+        <script>
           $("#id_preco_unitario").change(function () {
             var preco_unitario = $(this).val();
             var item = $("#id_item").val();
-            console.log('Item:', item)
             $.ajax({
               url: '/ajax/load-rentabilidade/',
               data: {
@@ -77,14 +72,12 @@
                 }
               }
             });
-
           });
         </script>
-        <script>//script para mostrar o preco total do pedido
+        <script>
           $("#id_quantidade").change(function () {
             var quantidade = $(this).val();
             var preco_unitario= $("#id_preco_unitario").val();
-            //
             $.ajax({
               url: '/ajax/load-total/',
               data: {
@@ -96,10 +89,7 @@
                 $('#id_total').val(data['total'])
               }
             });
-
           });
         </script>
-
-
   </body>
 </html>

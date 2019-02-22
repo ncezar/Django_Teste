@@ -15,3 +15,4 @@ class ProdutoAdmin(admin.ModelAdmin):
 @admin.register(Cadastro)
 class CadastroAdmin(admin.ModelAdmin):
     list_display = ['id', 'cliente', 'item', 'preco_unitario', 'quantidade', 'total']
+    

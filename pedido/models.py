@@ -18,8 +18,8 @@ class Produto(models.Model):
         return '{} '.format(self.nome)
 
 class Cadastro(models.Model):
-    cliente = models.ForeignKey('Cliente',on_delete=models.CASCADE,)
-    item = models.ForeignKey('Produto',on_delete=models.CASCADE,)
+    cliente = models.ForeignKey('Cliente',on_delete=models.CASCADE, null=False, default=0)
+    item = models.ForeignKey('Produto',on_delete=models.CASCADE,null=False, default=0)
     preco_unitario =models.FloatField(default=0)
     quantidade = models.IntegerField(default=0)
     total = models.FloatField(null=False, default=0)
