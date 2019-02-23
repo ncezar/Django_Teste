@@ -3,6 +3,7 @@ from pedido.models import Cadastro
 from pedido.models import Produto
 from pedido.models import Cliente
 from pedido.forms import CadastroForm
+import json
 import unittest
 
 class CadastroTestCase(unittest.TestCase):
