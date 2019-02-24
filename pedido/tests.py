@@ -27,3 +27,10 @@ class CadastroTestCase(unittest.TestCase):
             item=self.item,
         )
         self.assertEqual(str(cadastro), '{} - {}'.format(self.cliente.nome, self.item.nome))
+
+    def test_form(self):
+        cadastro = CadastroForms(
+            cliente=self.cliente,
+            item=self.item,
+        )
+        self.assertEqual
