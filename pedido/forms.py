@@ -7,7 +7,7 @@ class CadastroForm(forms.ModelForm):
         model = Cadastro
         fields = ['cliente', 'item', 'preco_unitario', 'quantidade', 'total']
 
-    def clean(self):
+    def clean(self):        
         item = self.cleaned_data['item']
         quantidade = self.cleaned_data['quantidade']
         preco_unitario = self.cleaned_data['preco_unitario']
